@@ -7,9 +7,9 @@ public class Handler {
     protected JSONReader jsonReader;
     protected HashMap<String, Entry> entryMap;
 
-    public Handler() {
+    public Handler(int status) {
         this.jsonReader = new JSONReader();
-        this.entryMap = jsonReader.readJSON();
+        this.entryMap = jsonReader.readJSON(status);
     }
 
     public void manualSave() {

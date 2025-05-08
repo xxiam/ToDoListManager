@@ -128,7 +128,7 @@ public class App {
     public static void main(String[] args) {
         boolean running = true;
         ScannerMadeEasy sc = new ScannerMadeEasy();
-        Handler handler = new Handler();
+        Handler handler = new Handler(1); // 1 for production, 0 for testing
         String[] options = {
             "[ 1 ] -> Add Entry",
             "[ 2 ] -> Edit Entry",

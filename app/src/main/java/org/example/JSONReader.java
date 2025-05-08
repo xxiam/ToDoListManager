@@ -9,21 +9,37 @@ import java.lang.reflect.Type;
 
 public class JSONReader {
     
-    private String readFile() {
+    private String readFile(int status) {
         // check if data.json exists, otherwise create it
-        if (!new java.io.File("data.json").exists()) {
-            try {
-                // create new file if it doesn't exist
-                new java.io.File("data.json").createNewFile();
-                return null;
-            } catch (java.io.IOException e) {
-                e.printStackTrace();
+        String fileName = null;
+        if (status == 1) {
+            fileName = "data.json";
+            if (!new java.io.File(fileName).exists()) {
+                try {
+                    // create new file if it doesn't exist
+                    new java.io.File(fileName).createNewFile();
+                    return null;
+                } catch (java.io.IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if (status == 0) {
+            fileName = "testData.json";
+            // check if testData.json exists, otherwise create it
+            if (!new java.io.File(fileName).exists()) {
+                try {
+                    // create new file if it doesn't exist
+                    new java.io.File(fileName).createNewFile();
+                    return null;
+                } catch (java.io.IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         
         // read the file
         StringBuilder jsonString = new StringBuilder();
-        try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader("data.json"))) {
+        try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
                 jsonString.append(line);
@@ -35,13 +51,14 @@ public class JSONReader {
     }
 
 
-    public HashMap<String, Entry> readJSON() {
+    public HashMap<String, Entry> readJSON(int status) {
+        // 0 for testData.json, 1 for data.json
         // specify the type of hashMap
         Type type = new TypeToken<HashMap<String, Entry>>() {}.getType();
 
 
         // take in from readFile()
-        String jsonString = readFile();
+        String jsonString = readFile(status);
 
         // if the file is empty/or is a new file, return an empty HashMap as there is no data
         if (jsonString == null || jsonString.isEmpty()) {
