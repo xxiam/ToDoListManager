@@ -51,6 +51,7 @@ task checkForToilet {
             println "Toilet is installed at: $result"
         } else {
             println "Toilet is not installed. Please install it to use this feature.\nrun 'sudo apt install toilet' to install it"
+            println "Otherwise toilet wont be used"
             throw new GradleException("Toilet is not installed")
         }
     }

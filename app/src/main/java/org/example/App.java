@@ -85,8 +85,7 @@ public class App {
             // Wait for the process to complete
             process.waitFor();
         } catch (Exception e) {
-            System.err.println("Error running 'toilet' command: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println("To-Do List App");
         }
     }
 
