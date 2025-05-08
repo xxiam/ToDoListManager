@@ -46,13 +46,16 @@ tasks.named('run') {
 
 task checkForToilet {
     doLast {
-        def result = "which toilet".execute().text.trim()
-        if (result) {
-            println "Toilet is installed at: $result"
-        } else {
-            println "Toilet is not installed. Please install it to use this feature.\nrun 'sudo apt install toilet' to install it"
-            println "Otherwise toilet wont be used"
-            throw new GradleException("Toilet is not installed")
+        try {
+            def result = "which toilet".execute().text.trim()
+            if (result) {
+                println "Toilet is installed at: $result"
+            } else {
+                println "Toilet is not installed. Please install it to use this feature.\nRun 'sudo apt install toilet' to install it."
+                throw new GradleException("Toilet is not installed")
+            }
+        } catch (IOException e) {
+            
         }
     }
 }
