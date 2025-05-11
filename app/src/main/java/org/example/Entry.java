@@ -31,7 +31,12 @@ public class Entry {
         this.description = description;
     }
     public void setPriority(int priority) {
-        this.priority = priority;
+        // check if priority is valid
+        if (priority < 0 || priority > 10) {
+            throw new IllegalArgumentException("Priority must be between 0 and 10");
+        } else {
+            this.priority = priority;
+        }
     }
     public void setCompleted(boolean completed) {
         this.completed = completed;

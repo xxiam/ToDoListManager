@@ -17,7 +17,7 @@ public class App {
     private static String white = "\u001B[37m";
     private static String reset = "\u001B[0m";
 
-    private static boolean isValidDate(String date) {
+    public static boolean isValidDate(String date) {
         // Check if the date is in the format YYYY-MM-DD
         if (date.equals("0")) { // 0 if no due date
             return true; 
