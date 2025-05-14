@@ -35,6 +35,9 @@ public class Handler {
     }
 
     public Entry removeEntry(String title) {
+        if (!entryMap.containsKey(title)) {
+            throw new IllegalArgumentException("Entry not found");
+        }
         Entry entry = entryMap.remove(title);
         jsonReader.writeJSON(entryMap);
         return entry;
