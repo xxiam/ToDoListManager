@@ -451,7 +451,7 @@ public class App {
         } while (stillEditing);
     }
 
-    private static void addNewEntry(Handler handler) {
+    public static void addNewEntry(Handler handler) {
         ScannerMadeEasy sc = new ScannerMadeEasy();
         // adds a new entry to the list
         System.out.println("Adding a new entry: ");

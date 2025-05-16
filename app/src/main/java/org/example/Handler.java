@@ -39,7 +39,7 @@ public class Handler {
             throw new IllegalArgumentException("Entry not found");
         }
         Entry entry = entryMap.remove(title);
-        jsonReader.writeJSON(entryMap);
+        manualSave();
         return entry;
     }
 
